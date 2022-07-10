@@ -39,6 +39,6 @@ int main(){
     string big = "fizzbuzz";
     string small = "fuzz";
 
-    cout<<find_distinct_smallest_window(big , small);
+    cout<<find_distinct_smallest_window(big);
 
 }
