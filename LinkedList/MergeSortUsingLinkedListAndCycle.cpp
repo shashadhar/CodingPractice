@@ -97,6 +97,7 @@ Node<T>* mergeSort(Node<T>* head){
 
 }
 
+template<typename T>
 bool containsCycle(Node<T> *head){
     //Complete this function 
     
