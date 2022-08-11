@@ -9,6 +9,7 @@ class Node {
     int data;
     Node* left=NULL;
     Node* right=NULL;
+    Node* root = NULL;
 
     Node(int data){
         this->data = data;
@@ -42,9 +43,14 @@ Node* createbst(Node* root, int data){
 
     // find the position to insert
     if(root->data > data){
-        root->left = createbst(root->left,data);
+        Node* leftNode = createbst(root->left,data);
+        leftNode->root = root;
+        root->left =  leftNode;
+
     }else{
-        root->right = createbst(root->right,data);
+        Node* right = createbst(root->right,data);
+        right->root = root;
+        root->right= right;
     }
     return root;
 
@@ -59,18 +65,18 @@ void inorderTraverse(Node* root){
     inorderTraverse(root->right);
 }
 
-bool isPresent(Node * root, int data){
+Node* isPresent(Node * root, int data){
     if(root==NULL){
-        return false;
+        return NULL;
     }
     if(root->data == data){
-        return true;
+        return root;
     }else if(root->data > data){
         return isPresent(root->left,data);
     }else{
         return isPresent(root->right,data);
     }
-   return false;
+   return NULL;
     
 }
 Node* successor;
@@ -80,7 +86,7 @@ Node* inorderSuccessor(Node* root, Node* target){
     if(target->right!=NULL){
         // go to extreme left and get the element
         Node* temp = target->right;
-        while (temp->left!=NULL)
+        while (temp!=NULL)
         {
              temp = temp->left;
         }
@@ -95,11 +101,11 @@ Node* inorderSuccessor(Node* root, Node* target){
     {
     
     // we need to traverse till we get the target
-    if(root->data > target->data){
-       successor = root;
+    if(temp->data > target->data){
+       successor = temp;
        temp = temp->left;
 
-    }else if(root->data < target->data){
+    }else if(temp->data < target->data){
         temp = temp->right;
     }else{
         break;
@@ -108,6 +114,48 @@ Node* inorderSuccessor(Node* root, Node* target){
 
    return successor;
 }
+
+
+// This is the inorder successor of special case where
+// root node is not given, only target node given
+Node* inorderSuccessorSpecial(Node* target){
+
+    // check if right node is not null
+    if(target->right!=NULL){
+        // go to extreme left and get the element
+        Node* temp = target->right;
+        while (temp->left!=NULL)
+        {
+             temp = temp->left;
+        }
+        return temp;
+        
+    }
+
+    // this is the case where we dont have right sub tree , 
+    // now we need to get root node which is greater than the target
+    Node* temp =target->root;
+    Node* successor = NULL;
+
+    while (temp!=NULL)
+    {
+    
+    // we need to traverse till we get the target
+    if(temp->data > target->data){
+       successor = temp;
+       temp = temp->root;
+       break;
+
+    }else if(temp->data < target->data){
+        temp = temp->root;
+    }else{
+        break;
+    }
+    }
+
+   return successor;
+}
+
 
 
 int main(){
@@ -119,11 +167,9 @@ int main(){
 
     inorderTraverse(root);
     cout<<endl;
-    if(isPresent(root, 14)){
-        cout<<"Present";
-    }else{
-        cout<<"not present";
-    }    
 
-    //cout<<"Inorder successor"<<inorderSuccessor(root,14);
+    Node* node = isPresent(root,10);
+    cout<<"Inorder successor of 13:"<<inorderSuccessorSpecial(node)->data;
+    
+    
 }
