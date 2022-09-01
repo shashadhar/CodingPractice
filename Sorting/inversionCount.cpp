@@ -11,13 +11,14 @@ int  merge(vector<int>&a1 , int begin,int mid,int end){
     vector<int>merged;
     int i=begin,j=mid+1;
     int cnt =0;
+   
     while((i <=mid) && (j <= end)){
         if(a1[i] < a1[j]){
             merged.push_back(a1[i]);
             i++;
 
         }else{
-            cnt = (mid -i) +1;
+            cnt += (mid -i) +1;
             merged.push_back(a1[j]);
             j++;
         }
