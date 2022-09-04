@@ -150,7 +150,7 @@ int main(){
     cout<<"List 1";
     print(head);
 
-    Node<int>* head2 = NULL;
+    /*Node<int>* head2 = NULL;
     insert(head2,48);
     insert(head2,47);
     insert(head2,46);
@@ -164,7 +164,10 @@ int main(){
     head = mergeSortedList(head,head2);
 
     cout<<endl<<"Kth last element"<<endl;
-    cout<<kthlastNode(head,3)->data<<endl;
+    cout<<kthlastNode(head,3)->data<<endl;*/
+    
+    cout<< endl;
+    head = kReverseLinkedList(head,3);
 
     print(head);
 
