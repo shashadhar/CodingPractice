@@ -7,6 +7,7 @@
 #include<unordered_map>
 #include <algorithm>
 #include <utility>
+#include<bits/stdc++.h>
 
 using namespace std;
 
@@ -27,7 +28,7 @@ vector<int> stockSpan(vector<int> v){
           }else{
               result.push_back(i+1);
           }
-          stk.push(pair{i,v[i]});
+          stk.push({i,v[i]});
 
         }
        

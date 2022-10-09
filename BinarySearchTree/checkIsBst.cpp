@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<climits>
 
 using namespace std;
 
@@ -126,7 +127,7 @@ bool isBinarySearchTree(Node* root , int min, int max){
         return true;
     }
 
-    if(!((root->data > max) || (root->data < min)) ){
+    if((root->data > max) || (root->data < min) ){
         return false;
     }
 

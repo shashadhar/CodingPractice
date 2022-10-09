@@ -35,15 +35,16 @@ string find_smallest_window(string big, string small){
            // contract the window
            if(cnt == small_len ){
               while(fp[big[start]] == 0 || fs[big[start]] > fp[big[start]]){
+                fs[big[start]]--;
                 start++;
-              }
+            }
 
              win_size = i-start+1;
              if(win_size < min_win_size){
                 min_win_size = win_size;
                 win_start = start;
              }
-
+           
            }
     }
   if(win_start == -1){
@@ -57,8 +58,12 @@ string find_smallest_window(string big, string small){
 // one small string and big string, find smallest window in big string which has all the charaters of
 // small string
 int main(){
-    string big = "fizzbuzz";
+   // string big = "fizzbuzz";
+    //string small = "fuzz";
+    string big = "fifghuzzbukzzfuzz";
     string small = "fuzz";
+
+
 
     cout<<find_smallest_window(big , small);
 

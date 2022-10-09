@@ -7,6 +7,7 @@
 #include <string>
 #include<set>
 #include <map>
+#include<climits>
 
 using namespace std;
 string s = "thequickbrownfox";

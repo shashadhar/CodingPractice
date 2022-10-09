@@ -1,6 +1,7 @@
 #include <iostream>
 #include<vector>
 #include<algorithm>
+#include<climits>
 
 using namespace std;
 
@@ -68,6 +69,7 @@ int getCoinBU(vector<int> coins, int target){
 int main(){
     vector<int> denoms= {1,5,7,10};
     vector<int> dp(1000,INT_MAX);
-    cout<<"coins:"<<getCoinTP(denoms,16,dp);
+    cout<<"coins:"<<getCoinTP(denoms,16,dp)<<endl;
+    cout<< getCoin(denoms,16);
 
 }

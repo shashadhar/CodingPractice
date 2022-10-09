@@ -10,6 +10,22 @@ using namespace std;
 vector<string> v;
 
 
+void findPermutationstring(string inp,int i){
+     if(inp[i]=='\0'){
+         cout<<inp<<endl;
+         v.push_back(inp);
+         return;
+     }
+
+     for(int j =i; inp[j]!='\0';j++){
+         swap(inp[i],inp[j]);
+         findPermutationstring(inp,i+1);
+         swap(inp[i],inp[j]);
+     }
+
+
+}
+
 void findPermutations(char* inp,int i){
      if(inp[i]=='\0'){
          cout<<inp<<endl;
@@ -31,7 +47,7 @@ void findPermutations(char* inp,int i){
 // Ex: abc, acb,bac,bca,cab,cba
 int main()
 {
- string s = "PQR";
+ string s = "ABC";
  int n = s.length();
  char *ss  = new char(n+1);
  for(int i =0;i<n;i++){
@@ -55,5 +71,8 @@ int main()
      for(auto x:st){
         cout<<x<<endl;
     }
+
+    cout<<"***"<<endl;
+    findPermutationstring(s,0);
  
 }

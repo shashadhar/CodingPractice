@@ -52,6 +52,6 @@ int main(){
     int n1= s.length();
     int n2 = s2.length();
 
-   vector<vector<int>> dp = vector(n1, vector<int>(n2,-1));
+   vector<vector<int>> dp(n1, vector<int>(n2,-1));
    cout<<endl<< LCSTD(s,s2,0,0,dp);
 }

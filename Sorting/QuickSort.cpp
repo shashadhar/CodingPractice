@@ -30,6 +30,20 @@ int partition(vector<int>&a1 , int begin,int end){
      return j;
 }
 
+// last element as pivot
+int partition3(vector<int> &a,int s, int l){
+    int pivot = a[l];
+    int i =s-1;
+    int j =s;
+    for(;j<l;j++){
+        if(a[j] < pivot){
+            i++;
+            swap(a[i], a[j]);
+        }
+    }
+    swap(a[i+1],pivot);
+}
+
 
 int partition2 ( vector<int> &A,int start ,int end) {
     int i = start + 1;
